@@ -1,11 +1,12 @@
 import React from "react";
-import SearchBar from "./components/SearchBar";
+import Navbar from "./components/Navbar";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
-    <div>
-      <SearchBar />
-    </div>
+    <ThemeProvider>
+      <Navbar />
+    </ThemeProvider>
   );
 }
 
