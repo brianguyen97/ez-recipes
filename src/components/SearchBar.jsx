@@ -35,16 +35,17 @@ function SearchBar() {
   };
 
   return (
-    <div className="rounded-div flex">
-      <form onSubmit={handleSubmit}>
+    <div className="flex justify-center items-center mt-6">
+      <form onSubmit={handleSubmit} className="flex items-center">
         <input
+          className="w-64 px-3 py-2 mr-2 bg-primary border border-input rounded-2xl shadow-xl"
           type="text"
           value={searchTerm}
           onChange={handleChange}
           placeholder="Find Recipes"
         />
         <button
-          className="w-[50%] my-2 p-3 bg-button text-btnText rounded-2xl shadow-xl"
+          className="px-3 py-2 bg-button text-btnText rounded-2xl shadow-xl"
           type="submit"
         >
           Search
