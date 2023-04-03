@@ -41,7 +41,6 @@ function RecipeSearchBasic() {
     <div>
       <SearchBar
         searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
         handleSubmit={handleSubmit}
         handleChange={handleChange}
       />
