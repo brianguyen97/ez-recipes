@@ -1,51 +1,15 @@
-import { useState } from "react";
-import axios from "axios";
+import React from "react";
 
-// Defining constants for the API key, host, and URL
-const API_KEY = process.env.REACT_APP_RAPID_API_KEY;
-const API_HOST = process.env.REACT_APP_RAPID_API_HOST;
-const API_URL =
-  "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch";
-
-function SearchBar() {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  // Function to handle the form submission
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log(searchTerm);
-
-    try {
-      const response = await axios.get(API_URL, {
-        headers: {
-          "X-RapidAPI-Key": API_KEY,
-          "X-RapidAPI-Host": API_HOST,
-        },
-        params: {
-          query: searchTerm,
-          number: "100",
-        },
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  // Function to handle changes to the search input field
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
+function SearchBar(props) {
   return (
     <div className="flex justify-center items-center mt-6">
-      <form onSubmit={handleSubmit} className="flex items-center">
+      <form className="flex items-center" onSubmit={props.handleSubmit}>
         <input
           className="w-64 px-3 py-2 mr-2 bg-primary border border-input rounded-2xl shadow"
           type="text"
-          value={searchTerm}
-          onChange={handleChange}
           placeholder="Find Recipes"
+          value={props.searchTerm}
+          onChange={props.handleChange}
         />
         <button
           className="px-3 py-2 bg-button text-btnText rounded-2xl shadow"
