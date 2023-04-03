@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
+// Defining constants for the API key, host, and URL
 const API_KEY = process.env.REACT_APP_RAPID_API_KEY;
 const API_HOST = process.env.REACT_APP_RAPID_API_HOST;
 const API_URL =
@@ -9,6 +10,7 @@ const API_URL =
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Function to handle the form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(searchTerm);
@@ -29,6 +31,7 @@ function SearchBar() {
     }
   };
 
+  // Function to handle changes to the search input field
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
