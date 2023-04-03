@@ -9,14 +9,13 @@ function RecipesContainerItem() {
         alt="Card image cap"
       />
       <div className="p-4">
-        <h3 className="text-gray-900 font-semibold text-lg">Card title</h3>
-        <p className="mt-2 text-gray-600">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
+        <h3 className="text-gray-900 font-semibold text-lg text-center">
+          Card title
+        </h3>
+
         <a
           href="#"
-          className="mt-2 text-lg font-medium text-indigo-500 hover:text-indigo-600"
+          className="mt-2 text-lg font-medium text-indigo-500 hover:text-indigo-600 flex justify-center"
         >
           Go somewhere
         </a>
