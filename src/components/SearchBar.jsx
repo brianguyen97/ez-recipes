@@ -23,6 +23,7 @@ function SearchBar() {
         },
         params: {
           query: searchTerm,
+          number: "100",
         },
       });
       console.log(response.data);
