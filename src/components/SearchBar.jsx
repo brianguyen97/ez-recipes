@@ -1,33 +1,32 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
+
+const API_KEY = process.env.REACT_APP_RAPID_API_KEY;
+const API_HOST = process.env.REACT_APP_RAPID_API_HOST;
+const API_URL =
+  "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch";
 
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(searchTerm);
 
-    const options = {
-      method: "GET",
-      url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch",
-      params: {
-        query: searchTerm,
-      },
-      headers: {
-        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-        "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
+    try {
+      const response = await axios.get(API_URL, {
+        headers: {
+          "X-RapidAPI-Key": API_KEY,
+          "X-RapidAPI-Host": API_HOST,
+        },
+        params: {
+          query: searchTerm,
+        },
       });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleChange = (event) => {
@@ -38,14 +37,14 @@ function SearchBar() {
     <div className="flex justify-center items-center mt-6">
       <form onSubmit={handleSubmit} className="flex items-center">
         <input
-          className="w-64 px-3 py-2 mr-2 bg-primary border border-input rounded-2xl shadow-xl"
+          className="w-64 px-3 py-2 mr-2 bg-primary border border-input rounded-2xl shadow"
           type="text"
           value={searchTerm}
           onChange={handleChange}
           placeholder="Find Recipes"
         />
         <button
-          className="px-3 py-2 bg-button text-btnText rounded-2xl shadow-xl"
+          className="px-3 py-2 bg-button text-btnText rounded-2xl shadow"
           type="submit"
         >
           Search
