@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import axios from "axios";
+import RecipesContainer from "../components/RecipesContainer";
+import RecipesContainerItem from "../components/RecipesContainerItem";
 
 // Defining constants for the API key, host, and URL
 const API_KEY = process.env.REACT_APP_RAPID_API_KEY;
@@ -9,7 +11,9 @@ const API_URL =
   "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch";
 
 function RecipeSearchBasic() {
+  // State hooks to manage search term and search results
   const [searchTerm, setSearchTerm] = useState("");
+  const [results, setResults] = useState(null);
 
   // Function to handle the form submission
   const handleSubmit = async (event) => {
@@ -17,17 +21,17 @@ function RecipeSearchBasic() {
     console.log(searchTerm);
 
     try {
-      const response = await axios.get(API_URL, {
+      const res = await axios.get(API_URL, {
         headers: {
           "X-RapidAPI-Key": API_KEY,
           "X-RapidAPI-Host": API_HOST,
         },
         params: {
           query: searchTerm,
-          number: "100",
+          number: "25",
         },
       });
-      console.log(response.data);
+      setResults(res.data.results);
     } catch (error) {
       console.error(error);
     }
@@ -37,13 +41,19 @@ function RecipeSearchBasic() {
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
+
   return (
     <div>
-      <SearchBar
-        searchTerm={searchTerm}
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-      />
+      <div>
+        {/* Render SearchBar component with relevant props */}
+        <SearchBar
+          searchTerm={searchTerm}
+          handleSubmit={handleSubmit}
+          handleChange={handleChange}
+        />
+      </div>
+      {/* Render RecipesContainer component with results as prop, only if results are available */}
+      {results && <RecipesContainer results={results} />}
     </div>
   );
 }
