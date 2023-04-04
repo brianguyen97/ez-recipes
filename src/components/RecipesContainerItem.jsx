@@ -1,6 +1,6 @@
 import React from "react";
 
-function RecipesContainerItem() {
+function RecipesContainerItem(props) {
   return (
     <div className="w-full max-w-xs mx-auto bg-white rounded-lg shadow-md overflow-hidden">
       <img
