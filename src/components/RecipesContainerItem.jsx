@@ -1,7 +1,7 @@
 import React from "react";
 
 function RecipesContainerItem(props) {
-  const { image, title } = props;
+  const { image, title, id } = props;
 
   return (
     <div className="rounded-div w-full max-w-xs mx-auto bg-white rounded-lg shadow-md overflow-hidden">
@@ -16,7 +16,7 @@ function RecipesContainerItem(props) {
         </h3>
 
         <a
-          href="#"
+          href={props.id}
           className="mt-2 text-lg font-medium text-indigo-500 hover:text-indigo-600 flex justify-center"
         >
           View Recipe
