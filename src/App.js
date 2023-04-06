@@ -7,6 +7,7 @@ import Signin from "./routes/Signin";
 import Signup from "./routes/Signup";
 import Account from "./routes/Account";
 import RecipeSearchBasic from "./routes/RecipeSearchBasic";
+import SpecificRecipe from "./routes/SpecificRecipe";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/recipe/:id" element={<SpecificRecipe />} />
       </Routes>
     </ThemeProvider>
   );
