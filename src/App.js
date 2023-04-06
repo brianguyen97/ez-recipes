@@ -19,7 +19,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/account" element={<Account />} />
-        <Route path="/recipe/:id" element={<SpecificRecipe />} />
+        <Route path="/:RecipeId" element={<SpecificRecipe />} />
       </Routes>
     </ThemeProvider>
   );
