@@ -1,23 +1,25 @@
 import React from "react";
 
 function RecipesContainerItem(props) {
+  const { image, title } = props;
+
   return (
-    <div className="w-full max-w-xs mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="rounded-div w-full max-w-xs mx-auto bg-white rounded-lg shadow-md overflow-hidden">
       <img
         className="h-48 w-full object-contain"
-        src="https://spoonacular.com/recipeImages/1812031-312x231.jpg"
+        src={image}
         alt="Card image cap"
       />
       <div className="p-4">
         <h3 className="text-gray-900 font-semibold text-lg text-center">
-          Card title
+          {title}
         </h3>
 
         <a
           href="#"
           className="mt-2 text-lg font-medium text-indigo-500 hover:text-indigo-600 flex justify-center"
         >
-          Go somewhere
+          View Recipe
         </a>
       </div>
     </div>
