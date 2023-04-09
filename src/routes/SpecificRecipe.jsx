@@ -30,7 +30,7 @@ function SpecificRecipe() {
       .catch(function (error) {
         console.error(error); // Log any errors to console for debugging purposes
       });
-  }, []); // Run useEffect hook only once when component mounts
+  }, [RecipeId]); // Run useEffect hook only when RecipeId paramter changes
 
   return (
     <div className="rounded-div">
