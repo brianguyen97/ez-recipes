@@ -53,6 +53,8 @@ function SpecificRecipe() {
       {recipeData ? (
         <img src={recipeData.image} alt={recipeData.title} />
       ) : null}
+      {/* Box with prepMins, cookMins and the amount of servings */}
+      {/* Step by step instructions  */}
     </div>
   );
 }
