@@ -49,6 +49,10 @@ function SpecificRecipe() {
           }}
         />
       ) : null}
+      {/* Render main image if recipeData is not null */}
+      {recipeData ? (
+        <img src={recipeData.image} alt={recipeData.title} />
+      ) : null}
     </div>
   );
 }
