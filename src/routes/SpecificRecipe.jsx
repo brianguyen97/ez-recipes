@@ -33,26 +33,20 @@ function SpecificRecipe() {
   }, [RecipeId]); // Run useEffect hook only when RecipeId paramter changes
 
   return (
-    <div className="rounded-div">
-      {/* Render recipe title if recipeData is not null, otherwise show loading message */}
-      {recipeData ? <h2>{recipeData.title}</h2> : <p>Loading...</p>}
+    <div>
+      <div className="border border-secondary rounded-2xl shadow-xl bg-primary px-2 max-w-[1140px] w-full mx-auto h-screen grid md:grid-cols-2 grid-rows-2">
+        {/* Render rating and review count */}
+        <div>5 Stars | 15 Reviews | Read Reviews(down arrow)</div>
 
-      {/* Render rating and review count */}
-      <div>5 Stars | 15 Reviews |</div>
-
-      {/* Render recipe summary if recipeData is not null */}
-      {recipeData ? (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: parser.parseFromString(recipeData.summary, "text/html").body
-              .innerHTML,
-          }}
-        />
-      ) : null}
-      {/* Render main image if recipeData is not null */}
-      {recipeData ? (
-        <img src={recipeData.image} alt={recipeData.title} />
-      ) : null}
+        {/* Render main image if recipeData is not null */}
+        {recipeData ? (
+          <img
+            src={recipeData.image}
+            alt={recipeData.title}
+            className="md:h-screen "
+          />
+        ) : null}
+      </div>
       {/* Box with prepMins, cookMins and the amount of servings */}
       {/* Step by step instructions  */}
     </div>
@@ -60,3 +54,13 @@ function SpecificRecipe() {
 }
 
 export default SpecificRecipe;
+
+//  {/* Render recipe summary if recipeData is not null */}
+//  {recipeData ? (
+//   <div
+//     dangerouslySetInnerHTML={{
+//       __html: parser.parseFromString(recipeData.summary, "text/html").body
+//         .innerHTML,
+//     }}
+//   />
+// ) : null}
