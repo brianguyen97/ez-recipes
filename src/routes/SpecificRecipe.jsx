@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { HiArrowSmDown } from "react-icons/hi";
+import { AiFillStar } from "react-icons/ai";
 
 const API_KEY = process.env.REACT_APP_RAPID_API_KEY; // Define API key constant
 const API_HOST = process.env.REACT_APP_RAPID_API_HOST; // Define API host constant
@@ -34,16 +36,28 @@ function SpecificRecipe() {
 
   return (
     <div>
-      <div className="border border-secondary rounded-2xl shadow-xl bg-primary px-2 max-w-[1140px] w-full mx-auto h-screen grid md:grid-cols-2 grid-rows-2">
+      <div className="border border-secondary rounded-2xl shadow-xl bg-primary p-3 w-full mx-auto h-screen grid sm:grid-cols-2 grid-rows-2">
         {/* Render rating and review count */}
-        <div>5 Stars | 15 Reviews | Read Reviews(down arrow)</div>
+        {/* Render recipe title if recipeData is not null, otherwise show loading message */}
+        <div className="flex flex-col justify-center items-center">
+          {recipeData ? <h2 className="">{recipeData.title}</h2> : null}
+
+          <div className="flex items-center">
+            <AiFillStar size={20} /> <AiFillStar size={20} />{" "}
+            <AiFillStar size={20} /> <AiFillStar size={20} />{" "}
+            <AiFillStar size={20} />| (15){" "}
+          </div>
+          <div className="flex items-center">
+            Read Reviews <HiArrowSmDown size={25} />
+          </div>
+        </div>
 
         {/* Render main image if recipeData is not null */}
         {recipeData ? (
           <img
             src={recipeData.image}
             alt={recipeData.title}
-            className="md:h-screen "
+            className="sm:h-screen max-h-[90%]"
           />
         ) : null}
       </div>
