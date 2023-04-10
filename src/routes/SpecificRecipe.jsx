@@ -36,11 +36,13 @@ function SpecificRecipe() {
 
   return (
     <div>
-      <div className="border border-secondary rounded-2xl shadow-xl bg-primary p-3 w-full mx-auto h-screen grid sm:grid-cols-2 grid-rows-2">
+      <div className="border border-secondary rounded-2xl shadow-xl bg-primary p-3  mx-[5%] mt-1 h-screen grid sm:grid-cols-2 grid-rows-2">
         {/* Render rating and review count */}
         {/* Render recipe title if recipeData is not null, otherwise show loading message */}
         <div className="flex flex-col justify-center items-center">
-          {recipeData ? <h2 className="">{recipeData.title}</h2> : null}
+          {recipeData ? (
+            <h2 className="font-bold text-3xl">{recipeData.title}</h2>
+          ) : null}
 
           <div className="flex items-center">
             <AiFillStar size={20} /> <AiFillStar size={20} />{" "}
@@ -54,11 +56,14 @@ function SpecificRecipe() {
 
         {/* Render main image if recipeData is not null */}
         {recipeData ? (
-          <img
-            src={recipeData.image}
-            alt={recipeData.title}
-            className="sm:h-screen max-h-[90%]"
-          />
+          <div>
+            <div className="border-t-2 border-gray-300 py-3 sm:hidden"></div>
+            <img
+              src={recipeData.image}
+              alt={recipeData.title}
+              className="sm:h-screen max-h-[90%] sm:mt-0 mt-12"
+            />
+          </div>
         ) : null}
       </div>
       {/* Box with prepMins, cookMins and the amount of servings */}
