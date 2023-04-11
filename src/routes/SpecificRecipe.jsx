@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { HiArrowSmDown } from "react-icons/hi";
 import { AiFillStar } from "react-icons/ai";
+import CookingTime from "../components/CookingTime";
 
 const API_KEY = process.env.REACT_APP_RAPID_API_KEY; // Define API key constant
 const API_HOST = process.env.REACT_APP_RAPID_API_HOST; // Define API host constant
@@ -10,7 +11,6 @@ const API_HOST = process.env.REACT_APP_RAPID_API_HOST; // Define API host consta
 function SpecificRecipe() {
   const { RecipeId } = useParams(); // Retrieve RecipeId from URL parameter
   const [recipeData, setRecipeData] = useState(null); // Initialize recipeData state to null
-
   const parser = new DOMParser(); // Create new instance of DOMParser to parse HTML string
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function SpecificRecipe() {
 
   return (
     <div>
-      <div className="border border-secondary rounded-2xl shadow-xl bg-primary p-3  mx-[5%] mt-1 h-screen grid sm:grid-cols-2 grid-rows-2">
+      <div className="border border-secondary rounded-2xl shadow-xl bg-primary p-3  mx-[5%] mt-1 h-screen-[50%] grid sm:grid-cols-2 grid-rows-2">
         {/* Render rating and review count */}
         {/* Render recipe title if recipeData is not null, otherwise show loading message */}
         <div className="flex flex-col justify-center items-center">
@@ -52,27 +52,17 @@ function SpecificRecipe() {
           <div className="flex items-center">
             Read Reviews <HiArrowSmDown size={25} />
           </div>
-          <div className="grid grid-cols-3 gap-2 p-3 bg-gray-200 rounded-lg mt-5">
-            <div className="bg-white rounded-md p-2 text-center">
-              Prep Mins: 30
-            </div>
-            <div className="bg-white rounded-md p-2 text-center">
-              Cook Mins: 60
-            </div>
-            <div className="bg-white rounded-md p-2 text-center">
-              Servings: 4
-            </div>
-          </div>
+          <CookingTime recipeData={recipeData} />
         </div>
 
         {/* Render main image if recipeData is not null */}
         {recipeData ? (
           <div>
-            <div className="border-t-2 border-gray-300 py-3 md:hidden"></div>
+            <div className="border-t-2 border-gray-300 py-3 sm:hidden"></div>
             <img
               src={recipeData.image}
               alt={recipeData.title}
-              className="md:h-screen max-h-[90%] md:mt-0 mt-12"
+              className="md:h-screen max-h-[90%] md:mt-0 mt-12 p-5"
             />
           </div>
         ) : null}
