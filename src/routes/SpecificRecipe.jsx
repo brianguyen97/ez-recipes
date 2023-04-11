@@ -52,16 +52,27 @@ function SpecificRecipe() {
           <div className="flex items-center">
             Read Reviews <HiArrowSmDown size={25} />
           </div>
+          <div className="grid grid-cols-3 gap-2 p-3 bg-gray-200 rounded-lg mt-5">
+            <div className="bg-white rounded-md p-2 text-center">
+              Prep Mins: 30
+            </div>
+            <div className="bg-white rounded-md p-2 text-center">
+              Cook Mins: 60
+            </div>
+            <div className="bg-white rounded-md p-2 text-center">
+              Servings: 4
+            </div>
+          </div>
         </div>
 
         {/* Render main image if recipeData is not null */}
         {recipeData ? (
           <div>
-            <div className="border-t-2 border-gray-300 py-3 sm:hidden"></div>
+            <div className="border-t-2 border-gray-300 py-3 md:hidden"></div>
             <img
               src={recipeData.image}
               alt={recipeData.title}
-              className="sm:h-screen max-h-[90%] sm:mt-0 mt-12"
+              className="md:h-screen max-h-[90%] md:mt-0 mt-12"
             />
           </div>
         ) : null}
