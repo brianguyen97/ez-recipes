@@ -11,7 +11,7 @@ const API_HOST = process.env.REACT_APP_RAPID_API_HOST; // Define API host consta
 function SpecificRecipe() {
   const { RecipeId } = useParams(); // Retrieve RecipeId from URL parameter
   const [recipeData, setRecipeData] = useState(null); // Initialize recipeData state to null
-  const parser = new DOMParser(); // Create new instance of DOMParser to parse HTML string
+  // const parser = new DOMParser(); // Create new instance of DOMParser to parse HTML string
 
   useEffect(() => {
     const options = {
@@ -35,40 +35,59 @@ function SpecificRecipe() {
   }, [RecipeId]); // Run useEffect hook only when RecipeId paramter changes
 
   return (
-    <div>
-      <div className="border border-secondary rounded-2xl shadow-xl bg-primary p-3  mx-[5%] mt-1 h-screen-[50%] grid sm:grid-cols-2 grid-rows-2">
+    <div className="p-3 mx-auto max-w-screen-lg">
+      <div className="border border-secondary rounded-2xl shadow-xl bg-primary grid md:grid-cols-2 grid-rows-2 gap-4">
         {/* Render rating and review count */}
-        {/* Render recipe title if recipeData is not null, otherwise show loading message */}
-        <div className="flex flex-col justify-center items-center">
+        <div className="p-4">
           {recipeData ? (
             <h2 className="font-bold text-3xl">{recipeData.title}</h2>
           ) : null}
-
-          <div className="flex items-center">
-            <AiFillStar size={20} /> <AiFillStar size={20} />{" "}
-            <AiFillStar size={20} /> <AiFillStar size={20} />{" "}
-            <AiFillStar size={20} />| (15){" "}
+          <div className="flex items-center mb-2">
+            <AiFillStar size={20} className="text-yellow-500 mr-1" />
+            <AiFillStar size={20} className="text-yellow-500 mr-1" />
+            <AiFillStar size={20} className="text-yellow-500 mr-1" />
+            <AiFillStar size={20} className="text-yellow-500 mr-1" />
+            <AiFillStar size={20} className="text-yellow-500 mr-2" />
+            <span className="text-gray-500">(15)</span>
           </div>
-          <div className="flex items-center">
-            Read Reviews <HiArrowSmDown size={25} />
+          <button className="flex items-center text-gray-500 hover:text-black transition duration-300 ease-in-out mb-2">
+            Read Reviews <HiArrowSmDown size={25} className="ml-1" />
+          </button>
+          <div className="grid grid-cols-3 gap-2 bg-gray-200 rounded-lg p-3 mt-5">
+            <div className="bg-white rounded-md p-2 text-center">
+              Prep Mins: 30
+            </div>
+            <div className="bg-white rounded-md p-2 text-center">
+              Cook Mins: 30
+            </div>
+            <div className="bg-white rounded-md p-2 text-center">
+              Servings: 30
+            </div>
           </div>
-          <CookingTime recipeData={recipeData} />
         </div>
 
         {/* Render main image if recipeData is not null */}
         {recipeData ? (
           <div>
-            <div className="border-t-2 border-gray-300 py-3 sm:hidden"></div>
-            <img
-              src={recipeData.image}
-              alt={recipeData.title}
-              className="md:h-screen max-h-[90%] md:mt-0 mt-12 p-5"
-            />
+            <div className="hidden md:block h-full w-full">
+              <img
+                src={recipeData.image}
+                alt={recipeData.title}
+                className="h-full w-full object-cover rounded-2xl"
+              />
+            </div>
+            <div className="md:hidden h-60">
+              <img
+                src={recipeData.image}
+                alt={recipeData.title}
+                className="h-full w-full object-cover rounded-2xl"
+              />
+            </div>
           </div>
         ) : null}
       </div>
       {/* Box with prepMins, cookMins and the amount of servings */}
-      {/* Step by step instructions  */}
+      {/* Equipment needed */}
     </div>
   );
 }
