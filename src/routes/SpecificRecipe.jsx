@@ -4,6 +4,7 @@ import axios from "axios";
 import { HiArrowSmDown } from "react-icons/hi";
 import { AiFillStar } from "react-icons/ai";
 import CookingTime from "../components/CookingTime";
+import NutritionFacts from "../components/NutritionFacts";
 
 const API_KEY = process.env.REACT_APP_RAPID_API_KEY; // Define API key constant
 const API_HOST = process.env.REACT_APP_RAPID_API_HOST; // Define API host constant
@@ -68,9 +69,7 @@ function SpecificRecipe() {
             />
           </div>
         ) : null}
-
-        {/* Box with prepMins, cookMins and the amount of servings */}
-        {/* Equipment needed */}
+        <NutritionFacts />
       </div>
     </div>
   );
