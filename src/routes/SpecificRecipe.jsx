@@ -55,25 +55,15 @@ function SpecificRecipe() {
           <div className="flex items-center justify-center text-gray-500 hover:text-black transition duration-300 ease-in-out mb-2">
             Read Reviews <HiArrowSmDown size={25} className="ml-1" />
           </div>
-          <div className="grid grid-cols-3 gap-2 bg-gray-200 rounded-lg p-3 mt-5">
-            <div className="bg-white rounded-md p-2 text-center">
-              Prep Mins: 30
-            </div>
-            <div className="bg-white rounded-md p-2 text-center">
-              Cook Mins: 30
-            </div>
-            <div className="bg-white rounded-md p-2 text-center">
-              Servings: 30
-            </div>
-          </div>
+          <CookingTime recipeData={recipeData} />
         </div>
 
         {/* Render main image if recipeData is not null */}
         {recipeData ? (
           <div className="flex justify-center">
             <img
-              src={recipeData.image}
-              alt={recipeData.title}
+              src={recipeData?.image}
+              alt={recipeData?.title}
               className="h-300 w-400 object-cover rounded-2xl p-5"
             />
           </div>
