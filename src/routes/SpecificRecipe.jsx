@@ -14,6 +14,7 @@ const API_HOST = process.env.REACT_APP_RAPID_API_HOST; // Define API host consta
 function SpecificRecipe() {
   const { RecipeId } = useParams(); // Retrieve RecipeId from URL parameter
   const [recipeData, setRecipeData] = useState(null); // Initialize recipeData state to null
+  const [ingredients, setIngredients] = useState(null);
   // const parser = new DOMParser(); // Create new instance of DOMParser to parse HTML string
 
   useEffect(() => {
@@ -30,6 +31,7 @@ function SpecificRecipe() {
       .request(options)
       .then(function (response) {
         setRecipeData(response.data); // Update recipeData state with API response data
+        setIngredients(response.data.extendedIngredients);
         console.log(response.data); // Log API response data to console for debugging purposes
       })
       .catch(function (error) {
@@ -72,7 +74,7 @@ function SpecificRecipe() {
           </div>
         ) : null}
         <NutritionFacts />
-        <Ingredients recipeData={recipeData} />
+        <Ingredients ingredients={ingredients} />
         <RecipeInstructions />
       </div>
     </div>
