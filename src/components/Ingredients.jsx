@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 function Ingredients({ ingredients }) {
   // Check if ingredients is undefined or null
@@ -13,8 +14,8 @@ function Ingredients({ ingredients }) {
       <p className="text-2xl font-medium text-gray-700 mb-3">Ingredients</p>
       <ul className="list-disc pl-0 text-gray-600 leading-relaxed ">
         {/* Map through each ingredient in ingredients */}
-        {ingredients.map((ingredient, index) => (
-          <li key={index} className="flex">
+        {ingredients.map((ingredient) => (
+          <li key={uuidv4()} className="flex">
             <span className="mr-2">&#8226;</span>
             <span className="">
               {/* Round the amount property of the ingredient to the nearest ten */}
