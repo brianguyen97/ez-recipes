@@ -16,7 +16,7 @@ function RecipeInstructions() {
   ];
 
   return (
-    <div className="bg-white p-5 shadow-md mt-5 mx-auto max-w-screen-md">
+    <div className="bg-white p-5 shadow-md mt-5">
       <p className="text-2xl font-medium text-gray-700 mb-3">Instructions</p>
       <ol className="list-decimal pl-5 text-gray-600 leading-relaxed">
         {instructions.map((instruction, index) => (

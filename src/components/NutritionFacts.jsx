@@ -8,7 +8,7 @@ function NutritionFacts() {
   const protein = "10g";
 
   return (
-    <div className="flex flex-col items-center justify-center bg-yellow-100 rounded-lg p-5 shadow-md">
+    <div className="flex flex-col items-center justify-center bg-yellow-100 p-5">
       <p className="text-lg font-medium text-gray-700 mb-3 text-center">
         Nutrition Facts
       </p>
