@@ -15,12 +15,14 @@ function SpecificRecipe() {
   const { RecipeId } = useParams(); // Retrieve RecipeId from URL parameter
   const [recipeData, setRecipeData] = useState(null); // Initialize recipeData state to null
   const [ingredients, setIngredients] = useState(null);
+  const [nutritionFacts, setNutritionFacts] = useState(null);
   // const parser = new DOMParser(); // Create new instance of DOMParser to parse HTML string
 
   useEffect(() => {
     const options = {
       method: "GET",
       url: `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${RecipeId}/information`,
+      params: { includeNutrition: "true" },
       headers: {
         "X-RapidAPI-Key": API_KEY,
         "X-RapidAPI-Host": API_HOST,
@@ -32,6 +34,7 @@ function SpecificRecipe() {
       .then(function (response) {
         setRecipeData(response.data); // Update recipeData state with API response data
         setIngredients(response.data.extendedIngredients);
+        setNutritionFacts(response.data.nutrition);
         console.log(response.data); // Log API response data to console for debugging purposes
       })
       .catch(function (error) {
@@ -73,7 +76,7 @@ function SpecificRecipe() {
             />
           </div>
         ) : null}
-        <NutritionFacts />
+        <NutritionFacts nutritionFacts={nutritionFacts} />
         <Ingredients ingredients={ingredients} />
         <RecipeInstructions />
       </div>
