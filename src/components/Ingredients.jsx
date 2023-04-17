@@ -18,8 +18,8 @@ function Ingredients({ ingredients }) {
           <li key={uuidv4()} className="flex">
             <span className="mr-2">&#8226;</span>
             <span className="">
-              {/* Round the amount property of the ingredient to the nearest ten */}
-              {Math.round(ingredient?.measures.metric.amount / 10) * 10}{" "}
+              {/* Round the amount property of the ingredient to the nearest whole number */}
+              {Math.round(ingredient?.measures.metric.amount)}{" "}
               {/* Use the unitShort property of the metric object */}
               {ingredient?.measures.metric.unitShort} {ingredient?.name}
             </span>
