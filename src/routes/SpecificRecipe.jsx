@@ -7,6 +7,7 @@ import CookingTime from "../components/CookingTime";
 import NutritionFacts from "../components/NutritionFacts";
 import Ingredients from "../components/Ingredients";
 import RecipeInstructions from "../components/RecipeInstructions";
+import RecipeSummary from "../components/RecipeSummary";
 
 const API_KEY = process.env.REACT_APP_RAPID_API_KEY; // Define API key constant
 const API_HOST = process.env.REACT_APP_RAPID_API_HOST; // Define API host constant
@@ -16,6 +17,7 @@ function SpecificRecipe() {
   const [recipeData, setRecipeData] = useState(null); // Initialize recipeData state to null
   const [ingredients, setIngredients] = useState(null);
   const [nutritionFacts, setNutritionFacts] = useState(null);
+  const [summary, setSummary] = useState(null);
   // const parser = new DOMParser(); // Create new instance of DOMParser to parse HTML string
 
   useEffect(() => {
@@ -35,6 +37,7 @@ function SpecificRecipe() {
         setRecipeData(response.data); // Update recipeData state with API response data
         setIngredients(response.data.extendedIngredients);
         setNutritionFacts(response.data.nutrition);
+        setSummary(response.data.summary);
         console.log(response.data); // Log API response data to console for debugging purposes
       })
       .catch(function (error) {
@@ -68,7 +71,7 @@ function SpecificRecipe() {
 
         {/* Render main image if recipeData is not null */}
         {recipeData ? (
-          <div className="flex justify-center">
+          <div className="flex justify-center border-b-2">
             <img
               src={recipeData?.image}
               alt={recipeData?.title}
@@ -76,6 +79,8 @@ function SpecificRecipe() {
             />
           </div>
         ) : null}
+
+        <RecipeSummary summary={summary} />
         <NutritionFacts nutritionFacts={nutritionFacts} />
         <Ingredients ingredients={ingredients} />
         <RecipeInstructions />
