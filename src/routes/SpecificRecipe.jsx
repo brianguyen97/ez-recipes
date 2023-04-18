@@ -18,7 +18,8 @@ function SpecificRecipe() {
   const [ingredients, setIngredients] = useState(null);
   const [nutritionFacts, setNutritionFacts] = useState(null);
   const [summary, setSummary] = useState(null);
-  // const parser = new DOMParser(); // Create new instance of DOMParser to parse HTML string
+  const [analyzedInstructions, setAnalyzedInstructions] = useState(null);
+  const [instructions, setInstructions] = useState(null);
 
   useEffect(() => {
     const options = {
@@ -38,6 +39,8 @@ function SpecificRecipe() {
         setIngredients(response.data.extendedIngredients);
         setNutritionFacts(response.data.nutrition);
         setSummary(response.data.summary);
+        setAnalyzedInstructions(response.data.analyzedInstructions);
+        setInstructions(response.data.instructions);
         console.log(response.data); // Log API response data to console for debugging purposes
       })
       .catch(function (error) {
@@ -83,20 +86,13 @@ function SpecificRecipe() {
         <RecipeSummary summary={summary} />
         <NutritionFacts nutritionFacts={nutritionFacts} />
         <Ingredients ingredients={ingredients} />
-        <RecipeInstructions />
+        <RecipeInstructions
+          instructions={instructions}
+          analyzedInstructions={analyzedInstructions}
+        />
       </div>
     </div>
   );
 }
 
 export default SpecificRecipe;
-
-//  {/* Render recipe summary if recipeData is not null */}
-//  {recipeData ? (
-//   <div
-//     dangerouslySetInnerHTML={{
-//       __html: parser.parseFromString(recipeData.summary, "text/html").body
-//         .innerHTML,
-//     }}
-//   />
-// ) : null}
