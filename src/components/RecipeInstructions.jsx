@@ -1,6 +1,6 @@
 import React from "react";
 
-function RecipeInstructions() {
+function RecipeInstructions(props) {
   const instructions = [
     "Preheat oven to 375°F.",
     "Cook macaroni according to package instructions. Drain and set aside.",
