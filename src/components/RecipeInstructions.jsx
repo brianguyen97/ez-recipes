@@ -1,31 +1,27 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
-function RecipeInstructions(props) {
-  const instructions = [
-    "Preheat oven to 375°F.",
-    "Cook macaroni according to package instructions. Drain and set aside.",
-    "In a large saucepan, melt butter over medium heat. Whisk in flour and cook for 1 minute, stirring constantly.",
-    "Gradually whisk in milk until smooth. Stir in garlic powder, onion powder, mustard powder, and cayenne pepper.",
-    "Cook sauce over medium heat, stirring constantly, until thickened, about 5 minutes.",
-    "Stir in cheddar cheese, Gruyere cheese, and cream cheese until melted and smooth.",
-    "Add cooked macaroni to the sauce and stir until well coated.",
-    "Pour macaroni and cheese into a large baking dish.",
-    "In a small bowl, combine bread crumbs and parsley. Sprinkle over macaroni and cheese.",
-    "Bake for 25-30 minutes, or until golden brown and bubbly.",
-    "Let cool for a few minutes before serving.",
-  ];
+function RecipeInstructions({ analyzedInstructions, instructions }) {
+  // If there are no analyzed instructions, don't render anything
+  if (!analyzedInstructions) return null;
+  if (!instructions) return null;
 
+  // Get the list of steps from the analyzed instructions
+  const data = analyzedInstructions[0].steps;
+
+  // Loop through each step and display it in a list item
   return (
-    <div className="bg-white p-5 shadow-md mt-5">
-      <p className="text-2xl font-medium text-gray-700 mb-3">Instructions</p>
-      <ol className="list-decimal pl-5 text-gray-600 leading-relaxed">
-        {instructions.map((instruction, index) => (
-          <li key={index} className="mb-3">
-            {instruction}
-          </li>
-        ))}
-      </ol>
-    </div>
+    <ol className="list-inside p-4 md:p-6 lg:p-8">
+      {data.map((step) => (
+        // Use the uuidv4 package to generate a unique key for each list item
+        <li key={uuidv4()} className="mb-4 flex items-center">
+          {/* Display the step number followed by a dot */}
+          <div className="mr-2 text-lg font-medium">{step.number}.</div>
+          {/* Display the step text */}
+          <p className="text-gray-700">{step.step}</p>
+        </li>
+      ))}
+    </ol>
   );
 }
 
