@@ -1,18 +1,22 @@
 import { useState } from "react";
 
 function Signup() {
+  // Set initial states for email, password, error message, and showError flag
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [showError, setShowError] = useState(false);
 
+  // Function to handle login
   const handleLogin = (e) => {
     e.preventDefault();
+    // Check if email or password is empty
     if (!email || !password) {
+      // Set error message and showError flag
       setErrorMessage("Please fill in all fields");
       setShowError(true);
     } else {
-      // code to handle login
+      // Code to handle login
     }
   };
 
@@ -22,6 +26,7 @@ function Signup() {
         className="bg-white p-8 rounded-lg shadow-lg"
         onSubmit={handleLogin}
       >
+        {/* Show error message if showError is true */}
         {showError && <p className="text-red-500 mb-4"> {errorMessage} </p>}
         <div className="mb-4">
           <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
