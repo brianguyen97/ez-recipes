@@ -2,22 +2,20 @@ import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function RecipeInstructions({ analyzedInstructions, instructions }) {
-  // If there are no analyzed instructions, don't render anything
-  if (!analyzedInstructions) return null;
-  if (!instructions) return null;
+  // If there are no analyzed instructions or instructions, display a message
+  if (!analyzedInstructions || !instructions) {
+    return <p className="text-gray-700">No recipe data available.</p>;
+  }
 
-  // Get the list of steps from the analyzed instructions
   const data = analyzedInstructions[0].steps;
 
-  // Loop through each step and display it in a list item
   return (
-    <ol className="list-inside p-4 md:p-6 lg:p-8">
+    <ol className="list-inside bg-gray-100 rounded-md p-4 md:p-6 lg:p-8">
       {data.map((step) => (
-        // Use the uuidv4 package to generate a unique key for each list item
         <li key={uuidv4()} className="mb-4 flex items-center">
-          {/* Display the step number followed by a dot */}
-          <div className="mr-2 text-lg font-medium">{step.number}.</div>
-          {/* Display the step text */}
+          <div className="w-8 h-8 mr-2 flex justify-center items-center bg-gray-300 rounded-full text-gray-700 font-bold">
+            {step.number}.
+          </div>
           <p className="text-gray-700">{step.step}</p>
         </li>
       ))}
