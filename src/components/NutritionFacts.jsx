@@ -54,8 +54,8 @@ function NutritionFacts({ nutritionFacts }) {
               {nutritionFacts.nutrients[8].name}
             </td>
             <td className="text-gray-600 py-1">
-              {nutritionFacts.nutrients[8].amount}
-              {Math.floor(nutritionFacts.nutrients[8].unit)}
+              {Math.floor(nutritionFacts.nutrients[8].amount)}
+              {nutritionFacts.nutrients[8].unit}
             </td>
           </tr>
         </tbody>
