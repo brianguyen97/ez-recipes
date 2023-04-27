@@ -1,11 +1,11 @@
 import React from "react";
 
-function NutritionFacts() {
-  const servingSize = "1 bowl (240g)";
-  const calories = "290";
-  const carbs = "35g";
-  const fat = "12g";
-  const protein = "10g";
+function NutritionFacts({ nutritionFacts }) {
+  // If there is no nutrition data display a message
+  if (!nutritionFacts) {
+    return <p className="text-gray-700">No nutrition data available.</p>;
+  }
+  console.log(nutritionFacts, "nF");
 
   return (
     <div className="flex flex-col items-center justify-center bg-yellow-100 p-5">
@@ -19,36 +19,44 @@ function NutritionFacts() {
               Serving Size
             </td>
             <td className="text-gray-600 py-1 border-b border-gray-300">
-              {servingSize}
+              {nutritionFacts.weightPerServing.amount}
+              {nutritionFacts.weightPerServing.unit}
             </td>
           </tr>
           <tr>
             <td className="font-medium text-gray-700 py-1 border-b border-gray-300">
-              Calories
+              {nutritionFacts.nutrients[0].name}
             </td>
             <td className="text-gray-600 py-1 border-b border-gray-300">
-              {calories}
+              {Math.floor(nutritionFacts.nutrients[0].amount)}
             </td>
           </tr>
           <tr>
             <td className="font-medium text-gray-700 py-1 border-b border-gray-300">
-              Total Carbs
+              {nutritionFacts.nutrients[3].name}
             </td>
             <td className="text-gray-600 py-1 border-b border-gray-300">
-              {carbs}
+              {Math.floor(nutritionFacts.nutrients[3].amount)}
+              {nutritionFacts.nutrients[3].unit}
             </td>
           </tr>
           <tr>
             <td className="font-medium text-gray-700 py-1 border-b border-gray-300">
-              Total Fat
+              {nutritionFacts.nutrients[1].name}
             </td>
             <td className="text-gray-600 py-1 border-b border-gray-300">
-              {fat}
+              {Math.floor(nutritionFacts.nutrients[1].amount)}
+              {nutritionFacts.nutrients[1].unit}
             </td>
           </tr>
           <tr>
-            <td className="font-medium text-gray-700 py-1">Protein</td>
-            <td className="text-gray-600 py-1">{protein}</td>
+            <td className="font-medium text-gray-700 py-1">
+              {nutritionFacts.nutrients[8].name}
+            </td>
+            <td className="text-gray-600 py-1">
+              {Math.floor(nutritionFacts.nutrients[8].amount)}
+              {nutritionFacts.nutrients[8].unit}
+            </td>
           </tr>
         </tbody>
       </table>
