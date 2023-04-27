@@ -88,7 +88,11 @@ function SpecificRecipe() {
         ) : null}
 
         <RecipeSummary summary={summary} />
-        <NutritionFacts nutritionFacts={nutritionFacts} />
+        <NutritionFacts
+          nutritionFacts={nutritionFacts}
+          servingData={servingData}
+          nutrients={nutrients}
+        />
         <Ingredients ingredients={ingredients} />
         <RecipeInstructions
           instructions={instructions}
