@@ -5,12 +5,6 @@ function NutritionFacts({ nutritionFacts }) {
   if (!nutritionFacts) {
     return <p className="text-gray-700">No nutrition data available.</p>;
   }
-  const servingSize = "1 bowl (240g)";
-  const calories = "290";
-  const carbs = "35g";
-  const fat = "12g";
-  const protein = "10g";
-
   console.log(nutritionFacts, "nF");
 
   return (
@@ -25,7 +19,8 @@ function NutritionFacts({ nutritionFacts }) {
               Serving Size
             </td>
             <td className="text-gray-600 py-1 border-b border-gray-300">
-              {servingSize}
+              {nutritionFacts.weightPerServing.amount}
+              {nutritionFacts.weightPerServing.unit}
             </td>
           </tr>
           <tr>
@@ -33,28 +28,24 @@ function NutritionFacts({ nutritionFacts }) {
               Calories
             </td>
             <td className="text-gray-600 py-1 border-b border-gray-300">
-              {calories}
+              25 Calories
             </td>
           </tr>
           <tr>
             <td className="font-medium text-gray-700 py-1 border-b border-gray-300">
               Total Carbs
             </td>
-            <td className="text-gray-600 py-1 border-b border-gray-300">
-              {carbs}
-            </td>
+            <td className="text-gray-600 py-1 border-b border-gray-300">26g</td>
           </tr>
           <tr>
             <td className="font-medium text-gray-700 py-1 border-b border-gray-300">
               Total Fat
             </td>
-            <td className="text-gray-600 py-1 border-b border-gray-300">
-              {fat}
-            </td>
+            <td className="text-gray-600 py-1 border-b border-gray-300">15g</td>
           </tr>
           <tr>
             <td className="font-medium text-gray-700 py-1">Protein</td>
-            <td className="text-gray-600 py-1">{protein}</td>
+            <td className="text-gray-600 py-1">25g</td>
           </tr>
         </tbody>
       </table>
