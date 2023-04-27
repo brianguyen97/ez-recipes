@@ -25,10 +25,10 @@ function NutritionFacts({ nutritionFacts }) {
           </tr>
           <tr>
             <td className="font-medium text-gray-700 py-1 border-b border-gray-300">
-              Calories
+              {nutritionFacts.nutrients[0].name}
             </td>
             <td className="text-gray-600 py-1 border-b border-gray-300">
-              25 Calories
+              {Math.floor(nutritionFacts.nutrients[0].amount)}
             </td>
           </tr>
           <tr>
