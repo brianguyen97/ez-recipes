@@ -1,11 +1,13 @@
 import React from "react";
 
-function NutritionFacts() {
+function NutritionFacts({ nutritionFacts, servingData, nutrients }) {
   const servingSize = "1 bowl (240g)";
   const calories = "290";
   const carbs = "35g";
   const fat = "12g";
   const protein = "10g";
+
+  console.log(servingData);
 
   return (
     <div className="flex flex-col items-center justify-center bg-yellow-100 p-5">

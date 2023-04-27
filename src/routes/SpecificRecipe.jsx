@@ -20,8 +20,6 @@ function SpecificRecipe() {
   const [summary, setSummary] = useState(null);
   const [analyzedInstructions, setAnalyzedInstructions] = useState(null);
   const [instructions, setInstructions] = useState(null);
-  const [servingData, setServingData] = useState(null);
-  const [nutrients, setNutrients] = useState(null);
 
   useEffect(() => {
     const options = {
@@ -43,8 +41,6 @@ function SpecificRecipe() {
         setSummary(response.data.summary);
         setAnalyzedInstructions(response.data.analyzedInstructions);
         setInstructions(response.data.instructions);
-        setServingData(response.data.weightPerServing);
-        setNutrients(response.data.nutrients);
         console.log(response.data); // Log API response data to console for debugging purposes
       })
       .catch(function (error) {
@@ -88,11 +84,7 @@ function SpecificRecipe() {
         ) : null}
 
         <RecipeSummary summary={summary} />
-        <NutritionFacts
-          nutritionFacts={nutritionFacts}
-          servingData={servingData}
-          nutrients={nutrients}
-        />
+        <NutritionFacts nutritionFacts={nutritionFacts} />
         <Ingredients ingredients={ingredients} />
         <RecipeInstructions
           instructions={instructions}
