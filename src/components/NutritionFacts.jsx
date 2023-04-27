@@ -33,9 +33,12 @@ function NutritionFacts({ nutritionFacts }) {
           </tr>
           <tr>
             <td className="font-medium text-gray-700 py-1 border-b border-gray-300">
-              Total Carbs
+              {nutritionFacts.nutrients[3].name}
             </td>
-            <td className="text-gray-600 py-1 border-b border-gray-300">26g</td>
+            <td className="text-gray-600 py-1 border-b border-gray-300">
+              {Math.floor(nutritionFacts.nutrients[3].amount)}
+              {nutritionFacts.nutrients[3].unit}
+            </td>
           </tr>
           <tr>
             <td className="font-medium text-gray-700 py-1 border-b border-gray-300">
