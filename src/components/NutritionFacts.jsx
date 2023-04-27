@@ -1,13 +1,17 @@
 import React from "react";
 
-function NutritionFacts({ NutritionFacts }) {
+function NutritionFacts({ nutritionFacts }) {
+  // If there is no nutrition data display a message
+  if (!nutritionFacts) {
+    return <p className="text-gray-700">No nutrition data available.</p>;
+  }
   const servingSize = "1 bowl (240g)";
   const calories = "290";
   const carbs = "35g";
   const fat = "12g";
   const protein = "10g";
 
-  console.log(NutritionFacts);
+  console.log(nutritionFacts, "nF");
 
   return (
     <div className="flex flex-col items-center justify-center bg-yellow-100 p-5">
