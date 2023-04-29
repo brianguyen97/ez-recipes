@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function LandingPage() {
   // Set up state to track the width of the screen
@@ -73,18 +74,14 @@ function LandingPage() {
           </div>
         ))}
       </div>
-      <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-16">
+      <Link
+        to="/search"
+        className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-16"
+      >
         Search for Recipes
-      </button>
+      </Link>
     </div>
   );
 }
 
 export default LandingPage;
-
-const img1 =
-  "https://images.unsplash.com/photo-1611759650297-9fd869c36f61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
-const img2 =
-  "https://images.unsplash.com/photo-1615937722923-67f6deaf2cc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
-const img3 =
-  "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2076&q=80";
