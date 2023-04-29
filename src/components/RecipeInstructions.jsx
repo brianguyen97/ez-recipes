@@ -17,7 +17,7 @@ function RecipeInstructions({ analyzedInstructions, instructions }) {
             {step.number}.
           </div>
           <div className="flex-1">
-            <p className="text-gray-700 font-bold mb-1">{step.step}</p>
+            <p className="text-gray-700 mb-1">{step.step}</p>
           </div>
         </li>
       ))}
