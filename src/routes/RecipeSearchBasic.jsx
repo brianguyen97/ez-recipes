@@ -31,7 +31,7 @@ function RecipeSearchBasic() {
         },
         params: {
           query: searchTerm,
-          number: "25",
+          number: "32",
         },
       });
       setResults(res.data.results);
