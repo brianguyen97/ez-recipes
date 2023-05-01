@@ -49,7 +49,7 @@ function RecipeSearchBasic() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center h-full">
       <div>
         {/* Render SearchBar component with relevant props */}
         <SearchBar
@@ -59,7 +59,11 @@ function RecipeSearchBasic() {
         />
       </div>
       {/* Render the spinner if isLoading is true */}
-      {isLoading && <FaSpinner className="spinner" />}
+      {isLoading && (
+        <div className="flex justify-center items-center mt-8">
+          <FaSpinner className="animate-spin text-6xl text-blue-500 flex justify-center items-center" />
+        </div>
+      )}
       {/* Render RecipesContainer component with results as prop, only if results are available */}
       {results && <RecipesContainer results={results} />}
     </div>
