@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FiMail, FiLock } from "react-icons/fi";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -7,11 +8,7 @@ function Signup() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (password === confirmPassword) {
-      console.log(`Submitting email ${email} with password ${password}`);
-    } else {
-      console.log("Passwords do not match");
-    }
+    console.log(`Submitting email ${email} and password ${password}`);
   };
 
   return (
@@ -19,15 +16,10 @@ function Signup() {
       <div className="max-w-md w-full mx-auto px-4">
         <div className="text-3xl font-bold mb-6 text-center">Sign Up</div>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 font-bold mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
+          <div className="mb-4 relative">
+            <FiMail className="absolute top-3 left-3 text-gray-500" size="20" />
             <input
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
               placeholder="Email"
@@ -36,15 +28,10 @@ function Signup() {
               required
             />
           </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
+          <div className="mb-4 relative">
+            <FiLock className="absolute top-3 left-3 text-gray-500" size="20" />
             <input
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
               placeholder="Password"
@@ -53,15 +40,10 @@ function Signup() {
               required
             />
           </div>
-          <div className="mb-6">
-            <label
-              className="block text-gray-700 font-bold mb-2"
-              htmlFor="confirmPassword"
-            >
-              Confirm Password
-            </label>
+          <div className="mb-4 relative">
+            <FiLock className="absolute top-3 left-3 text-gray-500" size="20" />
             <input
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="confirmPassword"
               type="password"
               placeholder="Confirm Password"
@@ -70,17 +52,16 @@ function Signup() {
               required
             />
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex justify-center">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4 w-full sm:w-auto"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
               Sign Up
             </button>
-            <a
-              className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-              href="#"
-            >
+          </div>
+          <div className="flex justify-center mt-6 text-sm">
+            <a className="text-blue-500 hover:text-blue-700" href="#">
               Already have an account? Click here to sign in.
             </a>
           </div>
