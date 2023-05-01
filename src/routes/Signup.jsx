@@ -1,4 +1,5 @@
 import { useState } from "react";
+import GoogleSignUpButton from "../components/GoogleSignUpButton";
 
 function Signup() {
   // Set initial states for email, password, error message, and showError flag
@@ -67,6 +68,7 @@ function Signup() {
           Sign Up{" "}
         </button>
       </form>
+      <GoogleSignUpButton />
     </div>
   );
 }
