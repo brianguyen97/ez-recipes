@@ -1,14 +1,26 @@
 import { useState } from "react";
 import { FiMail, FiLock } from "react-icons/fi";
+import { Link, redirect } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const { createUser } = UserAuth();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(`Submitting email ${email} and password ${password}`);
+  // Submit Handler
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await createUser(email, password);
+      redirect("/");
+    } catch (e) {
+      setError(e.message);
+      console.log(e.message);
+    }
   };
 
   return (
@@ -61,9 +73,9 @@ function Signup() {
             </button>
           </div>
           <div className="flex justify-center mt-6 text-sm">
-            <a className="text-blue-500 hover:text-blue-700" href="#">
+            <Link to="/signin" className="text-blue-500 hover:text-blue-700">
               Already have an account? Click here to sign in.
-            </a>
+            </Link>
           </div>
         </form>
       </div>

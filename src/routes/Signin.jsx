@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FiMail, FiLock } from "react-icons/fi";
 import GoogleSignInButton from "../components/GoogleSignInButton";
+import { Link } from "react-router-dom";
 
 function Signin() {
   const [email, setEmail] = useState("");
@@ -54,9 +55,13 @@ function Signin() {
             <GoogleSignInButton />
           </div>
           <div className="flex justify-center mt-6 text-sm">
-            <a className="text-blue-500 hover:text-blue-700" href="#">
+            <Link
+              to="/signup"
+              className="text-blue-500 hover:text-blue-700"
+              href="#"
+            >
               Don't have an account? Click here to sign up.
-            </a>
+            </Link>
           </div>
         </form>
       </div>
