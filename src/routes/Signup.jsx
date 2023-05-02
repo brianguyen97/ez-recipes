@@ -1,15 +1,26 @@
 import { useState } from "react";
 import { FiMail, FiLock } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const { createUser } = UserAuth();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(`Submitting email ${email} and password ${password}`);
+  // Submit Handler
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await createUser(email, password);
+      redirect("/");
+    } catch (e) {
+      setError(e.message);
+      console.log(e.message);
+    }
   };
 
   return (
