@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FiMail, FiLock } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -61,9 +62,9 @@ function Signup() {
             </button>
           </div>
           <div className="flex justify-center mt-6 text-sm">
-            <a className="text-blue-500 hover:text-blue-700" href="#">
+            <Link to="/signin" className="text-blue-500 hover:text-blue-700">
               Already have an account? Click here to sign in.
-            </a>
+            </Link>
           </div>
         </form>
       </div>
