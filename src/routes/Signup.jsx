@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FiMail, FiLock } from "react-icons/fi";
-import { Link, redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
 function Signup() {
@@ -10,17 +10,23 @@ function Signup() {
   const [error, setError] = useState("");
   const { createUser } = UserAuth();
 
-  // Submit Handler
-  const handleSubmit = async (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    try {
-      await createUser(email, password);
-      redirect("/");
-    } catch (e) {
-      setError(e.message);
-      console.log(e.message);
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
     }
+    createUser(email, password)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((e) => {
+        setError(e.message);
+        console.log(e.message);
+      });
   };
 
   return (
