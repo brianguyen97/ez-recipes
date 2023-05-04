@@ -1,71 +1,66 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import ThemeToggle from "./ThemeToggle";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { FaSearch, FaUser, FaSignOutAlt } from "react-icons/fa";
 
 function Navbar() {
-  const [nav, setNav] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
-  const handleNav = () => {
-    setNav(!nav);
+  const handleLogout = () => {
+    // logic to log out the user goes here
+    setIsAuthenticated(false);
   };
 
   return (
-    <div className="rounded-div flex items-center justify-between h-20 font-bold">
-      <Link to="/">
-        <h1 className="text-2xl">EZRecipes</h1>
-      </Link>
-      <div className="hidden md:block">
-        <ThemeToggle />
-      </div>
-      <div className="hidden md:block">
-        <Link to="/signin" className="p-4 hover:text-accent">
-          Sign In
-        </Link>
-        <Link
-          to="/signup"
-          className="bg-button text-btnText px-5 py-2 ml-2 rounded-2xl shadow-lg"
-        >
-          Sign Up
-        </Link>
-      </div>
-      {/* Menu Icon */}
-      <div onClick={handleNav} className="block md:hidden cursor pointer z-10">
-        {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
-      </div>
-      {/* Mobile Menu */}
-      <div
-        className={
-          nav
-            ? "md:hidden fixed left-0 top-20 flex flex-col items-center justify-between w-full h-[90%] bg-primary ease-in duration-300 z-10"
-            : "fixed left-[-100%] top-20 h-[90%] flex flex-col items-center justify-between ease-in duration-300"
-        }
-      >
-        <ul className="w-full p-4">
-          <li className="border-b py-6">
-            <Link to="/Home">Home</Link>
-          </li>
-          <li className="border-b py-6">
-            <Link to="/Account">Account</Link>
-          </li>
-          <li className="py-6">
-            <ThemeToggle />
-          </li>
-        </ul>
-        <div className="flex flex-col w-full p-4">
-          <Link to="/signin">
-            <button className="w-full my-2 bg-primary text-primary border border-secondary rounded-2xl shadow-xl">
-              Sign In
-            </button>
-          </Link>
-          <Link to="/signup">
-            <button className="w-full my-2 p-3 bg-button text-btnText rounded-2xl shadow-xl">
-              Sign Up
-            </button>
-          </Link>
+    <nav className="bg-white shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <Link to="/" className="text-2xl font-bold text-gray-800">
+              EZRecipes
+            </Link>
+          </div>
+          <div className="flex items-center">
+            <Link
+              to="/search"
+              className="p-2 rounded-full bg-gray-200 hover:bg-gray-300"
+            >
+              <FaSearch className="h-5 w-5 text-gray-700" />
+            </Link>
+            {isAuthenticated ? (
+              <>
+                <Link
+                  to="/account"
+                  className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 ml-4"
+                >
+                  <FaUser className="h-5 w-5 text-gray-700" />
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="py-2 px-4 rounded-lg text-gray-800 font-medium ml-4 hover:bg-gray-200"
+                >
+                  Logout <FaSignOutAlt className="inline-block h-4 w-4 ml-2" />
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/signin"
+                  className="py-2 px-4 rounded-lg text-gray-800 font-medium ml-4 hover:bg-gray-200"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  to="/signup"
+                  className="py-2 px-4 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-medium ml-2"
+                >
+                  Sign Up
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 
