@@ -1,12 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaSearch, FaUser, FaSignOutAlt } from "react-icons/fa";
+import { auth } from "../firebase";
+import { UserAuth } from "../context/AuthContext";
 
 function Navbar() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { logout } = UserAuth();
+
+  useEffect(() => {
+    // Set up listener for Firebase auth state changes
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+      }
+    });
+    // Clean up listener on unmount
+    return () => unsubscribe();
+  }, [isAuthenticated]);
 
   const handleLogout = () => {
     // logic to log out the user goes here
+    logout();
     setIsAuthenticated(false);
   };
 
