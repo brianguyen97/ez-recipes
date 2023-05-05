@@ -5,7 +5,6 @@ function NutritionFacts({ nutritionFacts }) {
   if (!nutritionFacts) {
     return <p className="text-gray-700">No nutrition data available.</p>;
   }
-  console.log(nutritionFacts, "nF");
 
   return (
     <div className="flex flex-col items-center justify-center bg-yellow-100 p-5">
