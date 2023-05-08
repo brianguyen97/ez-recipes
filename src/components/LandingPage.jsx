@@ -53,7 +53,7 @@ function LandingPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4">
       <div className="text-center mb-16">
-        <h1 className="text-6xl font-bold text-purple-900">
+        <h1 className="text-6xl font-extrabold text-blue-500">
           Welcome to EZRecipes!
         </h1>
       </div>
@@ -76,7 +76,8 @@ function LandingPage() {
       </div>
       <Link
         to="/search"
-        className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-16"
+        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full mt-16"
+        style={{ fontFamily: "Montserrat, sans-serif" }}
       >
         Search for Recipes
       </Link>
