@@ -9,7 +9,7 @@ This is a recipe website built using React. The website allows users to browse a
 - Browse a collection of recipes
 - Search for recipes based on different criteria
 - View recipe details, including ingredients and instructions
-- Save recipes
+
 
 ## Installation
 
@@ -39,6 +39,10 @@ Install EZRecipes with npm
 - Spoonacular API
 
 ## Upcoming Features
+
+- Save recipes
+- Leave reviews
+- More search filtering
 
 ## License
 
